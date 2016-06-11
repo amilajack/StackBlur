@@ -125,6 +125,8 @@ function getImageDataFromCanvas(canvas, top_x, top_y, width, height)
     try {
         try {
             imageData = context.getImageData(top_x, top_y, width, height);
+            console.log('set..');
+            window.some = imageData;
         } catch(e) {
             throw new Error("unable to access local image data: " + e);
             return;
@@ -135,6 +137,10 @@ function getImageDataFromCanvas(canvas, top_x, top_y, width, height)
 
     return imageData;
 }
+
+// function cacheCanvasImage(top_x, top_y, width, height) {
+//     window[`${top_x}_${top_y}`]
+// }
 
 function processCanvasRGBA(canvas, top_x, top_y, width, height, radius)
 {
