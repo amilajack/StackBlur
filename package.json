@@ -4,7 +4,7 @@
   "description": "Fast and almost Gaussian blur by Mario Klingemann",
   "main": "src/stackblur.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server -c0"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.8.0",
     "grunt-contrib-uglify": "^0.9.1"
+  },
+  "dependencies": {
+    "http-server": "^0.9.0"
   }
 }
