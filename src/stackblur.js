@@ -39,7 +39,9 @@
     */
 
 
-var mul_table = [
+/* eslint-disable */
+
+const mul_table = [
     512,512,456,512,328,456,335,512,405,328,271,456,388,335,292,512,
     454,405,364,328,298,271,496,456,420,388,360,335,312,292,273,512,
     482,454,428,405,383,364,345,328,312,298,284,271,259,496,475,456,
@@ -58,7 +60,7 @@ var mul_table = [
     289,287,285,282,280,278,275,273,271,269,267,265,263,261,259];
 
 
-var shg_table = [
+const shg_table = [
     9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17,
     17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19,
     19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20,
@@ -79,8 +81,8 @@ var shg_table = [
 
 function processImage(img, canvas, radius, blurAlphaChannel)
 {
-    if (typeof(img) == 'string') {
-        var img = document.getElementById(img);
+    if (typeof img === 'string') {
+        img = document.getElementById(img);
     }
     else if (!img instanceof HTMLImageElement) {
         return;
@@ -88,7 +90,7 @@ function processImage(img, canvas, radius, blurAlphaChannel)
     var w = img.naturalWidth;
     var h = img.naturalHeight;
 
-    if (typeof(canvas) == 'string') {
+    if (typeof(canvas) === 'string') {
         var canvas = document.getElementById(canvas);
     }
     else if (!canvas instanceof HTMLCanvasElement) {
@@ -114,7 +116,7 @@ function processImage(img, canvas, radius, blurAlphaChannel)
 
 function getImageDataFromCanvas(canvas, top_x, top_y, width, height)
 {
-    if (typeof(canvas) == 'string')
+    if (typeof(canvas) === 'string')
         var canvas  = document.getElementById(canvas);
     else if (!canvas instanceof HTMLCanvasElement)
         return;
@@ -125,8 +127,6 @@ function getImageDataFromCanvas(canvas, top_x, top_y, width, height)
     try {
         try {
             imageData = context.getImageData(top_x, top_y, width, height);
-            console.log('set..');
-            window.some = imageData;
         } catch(e) {
             throw new Error("unable to access local image data: " + e);
             return;
@@ -137,10 +137,6 @@ function getImageDataFromCanvas(canvas, top_x, top_y, width, height)
 
     return imageData;
 }
-
-// function cacheCanvasImage(top_x, top_y, width, height) {
-//     window[`${top_x}_${top_y}`]
-// }
 
 function processCanvasRGBA(canvas, top_x, top_y, width, height, radius)
 {
@@ -610,7 +606,7 @@ function BlurStack()
     this.next = null;
 }
 
-module.exports = {
+export default {
     image: processImage,
     canvasRGBA: processCanvasRGBA,
     canvasRGB: processCanvasRGB,

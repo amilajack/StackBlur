@@ -7,6 +7,8 @@
             html, body {
                 padding: 0;
                 margin: 0;
+				height: 100vh;
+				width: 100%;
                 text-align: center;
                 background: #fff;
                 font-family: Arial, sans-serif;
@@ -33,26 +35,57 @@
         <canvas id="canvas" width="200" height="200"></canvas>
         <div>
             <input type="range" min="0" max="50" value="0" id="slider" />
-            <img src="../img/forest.jpeg" alt="" id="super" width="100%"/>
-            <!-- <img src="../img/cow.jpeg" alt="" id="super" width="100%"/> -->
+            <img src="../img/forest.jpeg" crossOrigin="Anonymous" onload="downsizeImage(this)" id="super" width="100px"/>
+            <!-- <img src="../img/cow.jpeg" alt="" id="super" onload="downsizeImage(this)" width="100%"/> -->
             <!-- <img src="../img/img.jpeg" alt="" id="img" width="100%"/> -->
         </div>
-        <script src="../dist/stackblur.js"></script>
+        <script src="../dist/stackblur.min.js"></script>
         <script>
             // Canvas
-            // var canvas = document.getElementById("canvas");
-            // var cctx = canvas.getContext("2d");
-            // var buff = document.createElement("canvas");
-
-            // setTimeout(function () {
-            //     StackBlur.image('super', 'canvas', 40);
-            // }, 1000);
-
             // Slider
-            var slider = document.getElementById("slider");
-            slider.addEventListener("mousemove", function() {
-                StackBlur.image('super', 'canvas', slider.value);
-            }, true);
+
+			function downsizeImage(img) {
+			    console.log('some........');
+			    console.time();
+
+			    var canvas = document.querySelector('canvas');
+			    var ctx = canvas.getContext('2d');
+
+			    var width = img.width;
+			    var height = img.height;
+			    console.log(width, height);
+
+			    ctx.drawImage(img, 0, 0, 200, 200);
+			    var uri = canvas.toDataURL();
+
+			    console.log('done....');
+			    console.timeEnd();
+
+				var image = new Image();
+				image.src = uri;
+				console.log(image);
+				image.id = 'moo';
+				document.body.appendChild(image);
+
+				var slider = document.getElementById("slider");
+	            slider.addEventListener("mousemove", function() {
+	                StackBlur.image('moo', 'canvas', slider.value);
+					setBackground();
+	            }, true);
+			}
+
+			function setBackground() {
+				var canvas = document.querySelector('canvas');
+
+				var dataUrl = canvas.toDataURL();
+				document.body.style.background = 'url(' + dataUrl + ')'
+				document.body.style['background-repeat'] = 'no-repeat'
+				document.body.style['background-size'] = 'cover'
+				document.body.style['background-position'] = 'center'
+				// canvas.width  = window.innerWidth;
+				// canvas.height = window.innerHeight;
+			}
+
         </script>
     </body>
 </html>

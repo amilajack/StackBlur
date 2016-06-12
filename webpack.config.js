@@ -17,16 +17,16 @@ export default {
       }
     ]
   },
-  entry: './browser.js',
+  entry: './src/stackblur.js',
   output: {
-    path: path.join(__dirname, 'lib'),
-    filename: 'thepiratebay.js',
+    path: path.join(__dirname, 'dist'),
+    filename: 'stackblur.min.js',
     libraryTarget: 'umd',
-    library: 'thepiratebay',
-    umdNamedDefine: 'thepiratebay'
+    library: 'StackBlur',
+    umdNamedDefine: 'StackBlur'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },
   target: 'web',
