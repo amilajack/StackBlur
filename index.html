@@ -29,21 +29,8 @@
         </style>
     </head>
     <body>
-        <h1>StackBlur Demo</h1>
-        <canvas id="canvas" width="200" height="200"></canvas>
-        <div>
-            <input type="range" min="0" max="50" value="0" id="slider" />
-            <img src="./img/cow.jpeg" alt="" id="super" width="100%"/>
-        </div>
-        <script src="dist/stackblur.js"></script>
-        <script>
-            // Canvas
-
-            // Slider
-            var slider = document.getElementById("slider");
-            slider.addEventListener("mousemove", function() {
-                StackBlur.image('super', 'canvas', slider.value);
-            }, true);
-        </script>
+        Demos:
+		<a href="./demos/demo-1.html">Demo 1</a>
+		<a href="./demos/demo-2.html">Demo 2</a>
     </body>
 </html>

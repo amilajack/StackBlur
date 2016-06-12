@@ -38,6 +38,8 @@
     OTHER DEALINGS IN THE SOFTWARE.
     */
 
+import domtoimage from 'dom-to-image';
+
 
 /* eslint-disable */
 
@@ -78,6 +80,18 @@ const shg_table = [
     24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
     24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ];
 
+
+function some() {
+  // create a rendered image of the DOM element with id 'my-element' and attach it to the end of the document
+  domvas.toImage(document, () => {
+      console.log('ready')
+      console.log(this)
+  });
+}
+
+setTimeout(function () {
+  some();
+}, 2000);
 
 function processImage(img, canvas, radius, blurAlphaChannel)
 {

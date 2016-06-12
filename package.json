@@ -51,5 +51,8 @@
     "mocha": "^2.5.3",
     "uglifyify": "^3.0.1",
     "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "dom-to-image": "^2.4.0"
   }
 }
